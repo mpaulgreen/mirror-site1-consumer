@@ -32,7 +32,8 @@ public class MirrorSite1Consumer {
 
         Thread.sleep(1000);
 
-        // Every message send on server0, will be mirrored into server1
+        // Give it a good time before acknowledgements from the other sent over this mirror broker.
+
         try (Connection connection = cfServer0.createConnection()) {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Queue queue = session.createQueue("exampleQueue");
